@@ -1,0 +1,121 @@
+body {
+  background-color: #eeeeee;
+}
+
+span.badge {
+  position: relative;
+  display: inline-block;
+  float: none;
+}
+nav {
+  height: 64px !important;
+}
+
+.brand-logo {
+    padding-top: 3px !important;
+}
+
+.input-field input[type=date]:focus + label,
+.input-field input[type=text]:focus + label,
+.input-field input[type=email]:focus + label,
+.input-field input[type=password]:focus + label {
+  color: #e53935 !important;
+}
+
+.input-field input[type=date]:focus,
+.input-field input[type=text]:focus,
+.input-field input[type=email]:focus,
+.input-field input[type=password]:focus {
+  border-bottom: 2px solid #e53935 !important;
+  box-shadow: none !important;
+}
+
+.input-field textarea:focus + label {
+  color: #e53935 !important;
+}
+
+.input-field textarea:focus {
+  border-bottom: 2px solid #e53935 !important;
+  box-shadow: none !important;
+}
+.card-title {
+  display: block;
+  line-height: 32px;
+  margin-bottom: 8px;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+p {
+  display: block;
+}
+@media only screen and (min-width: 993px) {
+  main {
+    padding-left: 306px;
+  }
+  footer {
+    padding-left: 300px;
+  }
+  nav {
+    height: 70px !important;
+  }
+  ul.side-nav {
+    margin-top: 70px;
+  }
+  .brand-logo {
+      padding-top: 5px !important;
+      padding-left: 10px !important;
+  }
+}
+
+
+body::-webkit-scrollbar-track {
+	background-color: #eeeeee;
+}
+body::-webkit-scrollbar {
+	width: 12px;
+	background-color: #F5F5F5;
+}
+body::-webkit-scrollbar-thumb {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #B71C1C !important;
+}
+.circle {
+    border-radius: 0% !important;
+}
+.dropdown-content li>a, .dropdown-content li>span {
+    font-size: 16px;
+    color: #757575 !important;
+    display: block;
+    line-height: 22px;
+    padding: 14px 16px;
+}
+@media only screen and (min-width: 601px) {
+  nav .nav-wrapper ul#nav-mobile {
+      height: 70px !important;
+      line-height: 70px !important;
+  }
+}
+
+.dropdown-content {
+  max-height: 190px !important;
+}
+
+.auto-height {
+  max-height: 1000px !important;
+}
+
+.dropdown-content li>form>a {
+    font-size: 16px;
+    color: #757575 !important;
+    display: block;
+    line-height: 22px;
+    padding: 14px 16px;
+}
+.dropdown-content li>form>a>i {
+    height: inherit;
+    line-height: inherit;
+    float: left;
+    margin: 0 24px 0 0;
+    width: 24px;
+}
