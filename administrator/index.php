@@ -20,7 +20,11 @@
       require_once('../other/php/password.php');
       require_once('../other/php/functions.php');
 
-      $user = check_user();
+      if(is_checked_in() && is_administrator()) {
+        $user = check_user();
+      } else {
+        header("location: ../login");
+      }
     ?>
 
     <header>
@@ -35,7 +39,12 @@
             </a>
 
             <ul id="nav-mobile" class="right">
-              <li><a class="dropdown-button" href="#!" data-constrainwidth="false" data-beloworigin="true" data-activates="profileopt"><span class="hide-on-med-and-down">Hallo !</a></li>
+              <li>
+                <a class="dropdown-button" href="#!" data-constrainwidth="false" data-beloworigin="true" data-activates="profileopt">
+                  <span class="hide-on-large-only"><i class="material-icons large">account_circle</i></span>
+                  <span class="hide-on-med-and-down">Hallo <?php echo $user['vorname']; ?>!</span>
+                </a>
+              </li>
             </ul>
 
             <ul id="profileopt" class="dropdown-content">
@@ -51,7 +60,7 @@
              </li>
              <li class="divider"></li>
              <li>
-               <a href="" class="grey-text text-darken-1">
+               <a href="../logout" class="grey-text text-darken-1">
                  <i class="fa fa-sign-out fa-lg" style="margin-left: 3px;" aria-hidden="true"></i> Abmelden
                </a>
              </li>
@@ -81,7 +90,7 @@
         </li>
 
         <li>
-          <a class="waves-effect" href="geräte">
+          <a class="waves-effect" href="geraete">
             <i class="material-icons">build</i> Geräte
           </a>
         </li>

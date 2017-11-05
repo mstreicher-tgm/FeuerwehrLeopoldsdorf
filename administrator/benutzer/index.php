@@ -19,6 +19,11 @@
       require_once('../../other/php/password.php');
       require_once('../../other/php/functions.php');
 
+      if(is_checked_in() && is_administrator()) {
+        $user = check_user();
+      } else {
+        header("location: ../../login");
+      }
 
       if(isset($_POST['register'])) {
         $vorname = trim($_POST['vorname']);
@@ -157,7 +162,12 @@
             </a>
 
             <ul id="nav-mobile" class="right">
-              <li><a class="dropdown-button" href="#!" data-constrainwidth="false" data-beloworigin="true" data-activates="profileopt"><span class="hide-on-med-and-down">Hallo Matthias!</a></li>
+              <li>
+                <a class="dropdown-button" href="#!" data-constrainwidth="false" data-beloworigin="true" data-activates="profileopt">
+                  <span class="hide-on-large-only"><i class="material-icons large">account_circle</i></span>
+                  <span class="hide-on-med-and-down">Hallo <?php echo $user['vorname']; ?>!</span>
+                </a>
+              </li>
             </ul>
 
             <ul id="profileopt" class="dropdown-content">
@@ -199,7 +209,7 @@
         </li>
 
         <li>
-          <a class="waves-effect" href="../geräte">
+          <a class="waves-effect" href="../geraete">
             <i class="material-icons">build</i> Geräte
           </a>
         </li>
@@ -346,17 +356,17 @@
                           echo "<form class=\"col s12\" method=\"post\">";
                             echo "<div class=\"row\">";
                               echo "<div class=\"input-field col s12\">";
-                                echo "<select id=\"dienstgrad\" name=\"dienstgrad\" class=\"icons\" type=\"text\" required>";
-                                  echo "<option value=\"null\" disabled selected>Dienstgrad auswählen</option>";
+                                echo "<input id=\"dienstgrad\" name=\"dienstgrad\" type=\"text\" required>";
+                                echo "<label for=\"dienstgrad\">Dienstgrad</label>";
+                              echo "</div>";
+                              echo "<div class=\"input-field col s12\">";
+                                echo "<select id=\"dienstgrad\" name=\"dienstgrad\" value=\"test\" class=\"icons\">";
+                                  echo "<option value=\"default\" disabled selected>Dienstgrad auswählen</option>";
                                   for($j = 0; $j < count($dienstgrade); $j++) {
                                     echo "<option value=\"".$dienstgrade[$j][2]."\" data-icon=\"../../other/images/dienstgrade/".$dienstgrade[$j][1].".png\" class=\"left circle\">".$dienstgrade[$j][2]."</option>";
                                   }
                                 echo "</select>";
                                 echo "<label for=\"dienstgrad\">Dienstgrad</label>";
-                              echo "</div>";
-                              echo "<div class=\"input-field col s12\">";
-                                echo "<input id=\"test\" name=\"test\" type=\"text\" required>";
-                                echo "<label for=\"test\">Dienstgrad</label>";
                               echo "</div>";
                               echo "<div class=\"col s12 center-align\">";
                                 echo "<br><button type=\"submit\" name=\"rank\" value=\"".$bid."\" class=\"btn waves-effect red darken-1\" style=\"width: auto;\">Ändern</button><br><br>";
@@ -377,12 +387,12 @@
                             echo "<div class=\"row\">";
                               echo "<div class=\"input-field col s12\">";
                                 echo "<select id=\"berechtigung\" name=\"berechtigung\" type=\"text\" required>";
-                                  echo "<option value=\"\" disabled selected>Berechtigung auswählen</option>";
+                                  echo "<option value=\"default\" disabled selected>Berechtigung auswählen</option>";
                                   echo "<option value=\"Benutzer\">Benutzer</option>";
-                                  echo "<option value=\"Berechtigter\">Berechtigter</option>";
+                                  echo "<option value=\"Chargen\">Chargen</option>";
                                   echo "<option value=\"Administrator\">Administrator</option>";
                                 echo "</select>";
-                                echo "<label for=\"berechtigung\">Dienstgrad</label>";
+                                echo "<label for=\"berechtigung\">Berechtigung</label>";
                               echo "</div>";
                               echo "<div class=\"col s12 center-align\">";
                                 echo "<button type=\"submit\" name=\"perm\" value=\"".$bid."\" class=\"btn waves-effect red darken-1\" style=\"width: auto;\">Ändern</button>";

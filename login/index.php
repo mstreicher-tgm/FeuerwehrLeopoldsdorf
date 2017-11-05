@@ -74,13 +74,52 @@
         }
       }
     ?>
+    <div class="section"></div>
+    <main style="padding-top: 8%">
+      <center>
+        <div class="container">
+          <div class="z-depth-1 white lighten-4 row" style="max-width: 600px; padding: 48px 48px 80px 48px; border: 1px solid #EEE;">
+            <div class="center-align">
+              <img src="../other/images/logo.png" class="responsive-img center-align" style="max-width: 350px" />
+              <h6 style="margin-top: 2px">Mit deinem Konto anmelden</h6>
+            </div>
 
-    <main>
-      <form method="post">
-        <input type="text" placeholder="standesbuchnummer" name="standesbuchnummer" required />
-        <input type="password" placeholder="Passwort" name="passwort" required />
-        <input type="submit" name="login" />
-      </form>
+            <form class="col s12" method="post">
+              <div class='row'>
+                <div class='col s12'>
+                </div>
+              </div>
+
+              <div class='row'>
+                <div class='input-field col s12'>
+                  <input type='text' name='standesbuchnummer' id='standesbuchnummer' required />
+                  <label for='standesbuchnummer'>Standesbuchnummer</label>
+                </div>
+              </div>
+
+              <div class='row'>
+                <div class='input-field col s12' style="margin-bottom: 25px;">
+                  <input type='password' name='passwort' id='passwort' required />
+                  <label for='passwort'>Passwort eingeben</label>
+                </div>
+                <div class="row">
+                  <div class="col s6 left-align">
+                    <a class="dropdown-button col s12 red-text text-darken-1" href='#' data-activates='dropdown1'>Weitere Optionen</a>
+
+                    <ul id='dropdown1' class='dropdown-content' style="width: 300px !important">
+                      <li><a href="../register" class="grey-text text-darken-2">Konto erstellen</a></li>
+                    </ul>
+                  </div>
+                  <div class="col s6 right-align">
+                    <button type='submit' name='login' class='btn waves-effect red darken-2' style="width: auto;">Anmelden</button>
+                  </div>
+                </div>
+              </div>
+              <br />
+            </form>
+          </div>
+        </div>
+      </center>
     </main>
 
     <script src="../other/js/login.js"></script>

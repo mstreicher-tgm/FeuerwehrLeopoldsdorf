@@ -43,3 +43,12 @@ main {
       display: none;
   }
 }
+
+.spinner-blue-only {
+  border-color: #b71c1c !important;
+}
+
+.preloader-wrapper.big.extra {
+    width: 90px;
+    height: 90px;
+}

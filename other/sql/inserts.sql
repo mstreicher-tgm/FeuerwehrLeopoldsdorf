@@ -38,3 +38,6 @@ INSERT INTO `fahrzeugdata` (funkbezeichnung, fahrzeug, status) VALUES ("Kommando
 
 
 INSERT INTO `geraetedata` (geraet, standort, status) VALUES ("test", "KDOF", 2);
+
+
+INSERT INTO `userdata` (vorname, nachname, standesbuchnummer, dienstgrad, passwort, berechtigung, status) VALUES ("Matthias", "Streicher", "253", "Feuerwehrmann", "$2y$10$cbDjjJrsEtLdZx.3ftQEce3Coqh8tyR0Kw.cZ3KBR6eVBlkAi/e6O", "Administrator", 1);

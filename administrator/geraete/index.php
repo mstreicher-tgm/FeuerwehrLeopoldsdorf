@@ -20,6 +20,12 @@
       require_once('../../other/php/password.php');
       require_once('../../other/php/functions.php');
 
+      if(is_checked_in() && is_administrator()) {
+        $user = check_user();
+      } else {
+        header("location: ../../login");
+      }
+
       if(isset($_POST['register'])) {
         $geraet = $_POST['geraet'];
         $standort = $_POST['standort'];
@@ -98,26 +104,27 @@
             </a>
 
             <ul id="nav-mobile" class="right">
-              <li><a class="dropdown-button" href="#!" data-constrainwidth="false" data-beloworigin="true" data-activates="profileopt"><span class="hide-on-med-and-down">Hallo !</a></li>
+              <li>
+                <a class="dropdown-button" href="#!" data-constrainwidth="false" data-beloworigin="true" data-activates="profileopt">
+                  <span class="hide-on-large-only"><i class="material-icons large">account_circle</i></span>
+                  <span class="hide-on-med-and-down">Hallo <?php echo $user['vorname']; ?>!</span>
+                </a>
+              </li>
             </ul>
 
             <ul id="profileopt" class="dropdown-content">
              <li>
-               <a href="" class="grey-text text-darken-1">
+               <a href="../../profile" class="grey-text text-darken-1">
                  <i class="material-icons">account_box</i> Mein Profil
                </a>
              </li>
              <li>
-               <a href="" class="grey-text text-darken-1">
+               <a href="../../passwort" class="grey-text text-darken-1">
                  <i class="material-icons">vpn_key</i> Passwort ändern
                </a>
              </li>
              <li class="divider"></li>
-             <li>
-               <a href="" class="grey-text text-darken-1">
-                 <i class="fa fa-sign-out fa-lg" style="margin-left: 3px;" aria-hidden="true"></i> Abmelden
-               </a>
-             </li>
+             <li><a href="../../logout" class="grey-text text-darken-1"><i class="fa fa-sign-out fa-lg" style="margin-left: 3px;" aria-hidden="true"></i> Abmelden</a></li>
             </ul>
           </div>
         </nav>
@@ -184,7 +191,7 @@
                   </div>
                   <div class="input-field col s12 m12 l12">
                     <input id="standort" name="standort" type="text" required />
-                    <label for="standort">Standort</label>
+                    <label for="standort">Standort (Fahrzeug)</label>
                   </div>
                   <div class="col s12 center-align">
                     <button type="submit" name="register" class="btn waves-effect red darken-1" style="width: auto;">Hinzufügen</button>

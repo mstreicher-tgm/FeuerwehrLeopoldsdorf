@@ -20,6 +20,12 @@
       require_once('../../other/php/password.php');
       require_once('../../other/php/functions.php');
 
+      if(is_checked_in() && is_administrator()) {
+        $user = check_user();
+      } else {
+        header("location: ../../login");
+      }
+
       if(isset($_POST['register'])) {
         $funkbezeichnung = $_POST['funkbezeichnung'];
         $fahrzeug = $_POST['fahrzeug'];
@@ -98,7 +104,12 @@
             </a>
 
             <ul id="nav-mobile" class="right">
-              <li><a class="dropdown-button" href="#!" data-constrainwidth="false" data-beloworigin="true" data-activates="profileopt"><span class="hide-on-med-and-down">Hallo !</a></li>
+              <li>
+                <a class="dropdown-button" href="#!" data-constrainwidth="false" data-beloworigin="true" data-activates="profileopt">
+                  <span class="hide-on-large-only"><i class="material-icons large">account_circle</i></span>
+                  <span class="hide-on-med-and-down">Hallo <?php echo $user['vorname']; ?>!</span>
+                </a>
+              </li>
             </ul>
 
             <ul id="profileopt" class="dropdown-content">
@@ -140,7 +151,7 @@
         </li>
 
         <li>
-          <a class="waves-effect" href="../geräte">
+          <a class="waves-effect" href="../geraete">
             <i class="material-icons">build</i> Geräte
           </a>
         </li>

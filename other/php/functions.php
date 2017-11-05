@@ -22,7 +22,15 @@ function is_administrator() {
 	$result = $statement->execute(array('id' => $_SESSION['userid']));
 	$user = $statement->fetch();
 
-	return $user['admin'];
+	switch (strtolower($user['berechtigung'])) {
+		case 'administrator':
+			return true;
+			break;
+
+		default:
+			return false;
+			break;
+	}
 }
 
 
