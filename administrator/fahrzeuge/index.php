@@ -115,7 +115,7 @@
             <ul id="profileopt" class="dropdown-content">
               <li>
                 <a href="../../chargen" class="grey-text text-darken-1">
-                  <i class="material-icons">dashboard</i> Chargen
+                  <i class="material-icons">dashboard</i> Chargen Interface
                 </a>
               </li>
               <li class="divider"></li>

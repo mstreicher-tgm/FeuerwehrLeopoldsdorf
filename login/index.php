@@ -23,8 +23,8 @@
         $user = check_user();
 
         switch (strtolower($user['berechtigung'])) {
-          case 'benutzer':
-            header("location: /");
+          case 'chargen':
+            header("location: ../chargen");
             break;
 
           case 'administrator':
@@ -32,7 +32,7 @@
             break;
 
           default:
-            header("location: /");
+            header("location: ../logout");
             break;
         }
       }
@@ -50,19 +50,19 @@
           $berechtigung = $user['berechtigung'];
 
           if($status) {
-            $_SESSION['userid'] = $user['id'];
-
             switch (strtolower($berechtigung)) {
-              case 'benutzer':
-                header("location: /");
+              case 'chargen':
+                $_SESSION['userid'] = $user['id'];
+                header("location: ../chargen");
                 break;
 
               case 'administrator':
+                $_SESSION['userid'] = $user['id'];
                 header("location: ../administrator");
                 break;
 
               default:
-                header("location: /");
+                echo "<script>Materialize.toast('Dein Account wurde Aktiviert, hat aber keine Berechtigungen!', 5000);</script>";
                 break;
             }
 

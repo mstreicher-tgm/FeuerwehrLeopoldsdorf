@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" type="image/*" href="../../other/images/icon.png">
     <link rel="stylesheet" href="../../other/css/chargen.css">
-    <title>Feuerwehr Leopoldsdorf | Administrator Interface</title>
+    <title>Feuerwehr Leopoldsdorf | Chargen Interface</title>
   </head>
   <body>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -51,7 +51,7 @@
               <?php if(is_administrator()) { ?>
               <li>
                 <a href="../../administrator" class="grey-text text-darken-1">
-                  <i class="material-icons">dashboard</i> Administrator
+                  <i class="material-icons">dashboard</i> Admin Interface
                 </a>
               </li>
               <li class="divider"></li>
@@ -96,7 +96,23 @@
 
     <main>
       <br>
-
+      <div class="row">
+        <div class="col s12 m12 l8">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title"><b>Geräteübersicht</b></span>
+              <br>
+              <p>
+                Dies ist die Übersicht aller Geräte der Feuerwehr Leopoldsdorf. Die List enthält
+                die Gerätebezeichnung, den Standort, den Status und die genaueren Statusinformationen.
+                Hier können folgende Funktionen durchgeführt werden:<br><br>
+                &nbsp;&nbsp;<b>+</b> Status aller Geräte verändern.<br>
+                &nbsp;&nbsp;<b>+</b> Genauere Statusinformationen zu aller Geräte verändern.<br>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <script src="../../other/js/chargen.js"></script>

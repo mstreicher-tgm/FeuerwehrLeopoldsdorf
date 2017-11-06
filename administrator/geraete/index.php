@@ -115,7 +115,7 @@
             <ul id="profileopt" class="dropdown-content">
               <li>
                 <a href="../../chargen" class="grey-text text-darken-1">
-                  <i class="material-icons">dashboard</i> Chargen
+                  <i class="material-icons">dashboard</i> Chargen Interface
                 </a>
               </li>
               <li class="divider"></li>
@@ -162,7 +162,7 @@
     <main>
       <br>
       <div class="row">
-        <div class="col s12 m6 l6">
+        <div class="col s12 m6 l7">
           <div class="card">
             <div class="card-content">
               <span class="card-title"><b>Geräteübersicht</b></span>
@@ -178,7 +178,7 @@
             </div>
           </div>
         </div>
-        <div class="col s12 m6 l6">
+        <div class="col s12 m6 l5">
 
           <div class="card">
             <div class="card-content">

@@ -95,7 +95,6 @@
             $password_hash = password_hash($passwort, PASSWORD_DEFAULT);
             $statement = $pdo->prepare("UPDATE userdata SET passwort = :passwort WHERE id = :id");
             $result = $statement->execute(array('passwort' => $password_hash, 'id' => $pid));
-            $user = $statement->fetch();
 
             if($result)  {
               echo "<script>Materialize.toast('Passwort wurde erfolgreich geändert!', 5000);</script>";
@@ -111,7 +110,6 @@
       }
       elseif(isset($_POST['perm'])) {
         $pid = $_POST['perm'];
-        print_r($_POST);
         $berechtigung = trim($_POST['berechtigung']);
 
         $statement = $pdo->prepare("UPDATE userdata SET berechtigung = :berechtigung WHERE id = :id");
@@ -126,7 +124,6 @@
       elseif(isset($_POST['rank'])) {
         $rid = $_POST['rank'];
         $dienstgrad = $_POST['dienstgrad'];
-        print_r($_POST);
         $statement = $pdo->prepare("UPDATE userdata SET dienstgrad = :dienstgrad WHERE id = :id");
         $result = $statement->execute(array('dienstgrad' => $dienstgrad, 'id' => $rid));
 
@@ -173,7 +170,7 @@
             <ul id="profileopt" class="dropdown-content">
               <li>
                 <a href="../../chargen" class="grey-text text-darken-1">
-                  <i class="material-icons">dashboard</i> Chargen
+                  <i class="material-icons">dashboard</i> Chargen Interface
                 </a>
               </li>
               <li class="divider"></li>
@@ -357,16 +354,7 @@
                           echo "<form class=\"col s12\" method=\"post\">";
                             echo "<div class=\"row\">";
                               echo "<div class=\"input-field col s12\">";
-                                echo "<input id=\"dienstgrad\" name=\"dienstgrad\" type=\"text\" required>";
-                                echo "<label for=\"dienstgrad\">Dienstgrad</label>";
-                              echo "</div>";
-                              echo "<div class=\"input-field col s12\">";
-                                echo "<select id=\"dienstgrad\" name=\"dienstgrad\" value=\"test\" class=\"icons\">";
-                                  echo "<option value=\"default\" disabled selected>Dienstgrad auswählen</option>";
-                                  for($j = 0; $j < count($dienstgrade); $j++) {
-                                    echo "<option value=\"".$dienstgrade[$j][2]."\" data-icon=\"../../other/images/dienstgrade/".$dienstgrade[$j][1].".png\" class=\"left circle\">".$dienstgrade[$j][2]."</option>";
-                                  }
-                                echo "</select>";
+                                echo "<input type=\"text\" id=\"dienstgrad\" name=\"dienstgrad\" class=\"autocomplete\" value=\"".$benutzer[$i][4]."\" required>";
                                 echo "<label for=\"dienstgrad\">Dienstgrad</label>";
                               echo "</div>";
                               echo "<div class=\"col s12 center-align\">";
@@ -387,12 +375,7 @@
                           echo "<form class=\"col s12\" method=\"post\">";
                             echo "<div class=\"row\">";
                               echo "<div class=\"input-field col s12\">";
-                                echo "<select id=\"berechtigung\" name=\"berechtigung\" type=\"text\" required>";
-                                  echo "<option value=\"default\" disabled selected>Berechtigung auswählen</option>";
-                                  echo "<option value=\"Benutzer\">Benutzer</option>";
-                                  echo "<option value=\"Chargen\">Chargen</option>";
-                                  echo "<option value=\"Administrator\">Administrator</option>";
-                                echo "</select>";
+                                echo "<input type=\"text\" id=\"berechtigung\" name=\"berechtigung\" class=\"autocomplete\" value=\"".$benutzer[$i][6]."\" required>";
                                 echo "<label for=\"berechtigung\">Berechtigung</label>";
                               echo "</div>";
                               echo "<div class=\"col s12 center-align\">";
@@ -435,7 +418,6 @@
         </div>
       </div>
     </main>
-
     <script src="../../other/js/administrator.js"></script>
   </body>
 </html>
