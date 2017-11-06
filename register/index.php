@@ -23,8 +23,8 @@
         $user = check_user();
 
         switch (strtolower($user['berechtigung'])) {
-          case 'benutzer':
-            header("location: /");
+          case 'Chargen':
+            header("location: ../Chargen");
             break;
 
           case 'administrator':
@@ -32,7 +32,7 @@
             break;
 
           default:
-            header("location: /");
+            header("location: ../logout");
             break;
         }
       }
@@ -44,7 +44,7 @@
         $dienstgrad = trim($_POST['dienstgrad']);
         $passwort = trim($_POST['passwort']);
         $passwort2 = trim($_POST['passwort2']);
-        $berechtigung = "Benutzer";
+        $berechtigung = "Unberechtigter";
 
         if((strlen($passwort) >= 8)) {
           if($passwort == $passwort2) {

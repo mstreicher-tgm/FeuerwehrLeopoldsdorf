@@ -41,7 +41,7 @@ $(document).ready(function () {
   });
   $('input#berechtigung.autocomplete').autocomplete({
     data: {
-      "Benutzer": null,
+      "Unberechtigter": null,
       "Chargen": null,
       "Administrator": null,
     },

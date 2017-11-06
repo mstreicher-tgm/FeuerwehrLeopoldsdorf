@@ -32,7 +32,7 @@
         $dienstgrad = trim($_POST['dienstgrad']);
         $passwort = trim($_POST['passwort']);
         $passwort2 = trim($_POST['passwort2']);
-        $berechtigung = "Benutzer";
+        $berechtigung = "Unberechtigter";
 
         if((strlen($passwort) >= 8)) {
           if($passwort == $passwort2) {
@@ -112,13 +112,17 @@
         $pid = $_POST['perm'];
         $berechtigung = trim($_POST['berechtigung']);
 
-        $statement = $pdo->prepare("UPDATE userdata SET berechtigung = :berechtigung WHERE id = :id");
-        $result = $statement->execute(array('berechtigung' => $berechtigung, 'id' => $pid));
+        if($berechtigung == "Unberechtigter" || $berechtigung == "Chargen" || $berechtigung == "Administrator") {
+          $statement = $pdo->prepare("UPDATE userdata SET berechtigung = :berechtigung WHERE id = :id");
+          $result = $statement->execute(array('berechtigung' => $berechtigung, 'id' => $pid));
 
-        if($result)  {
-          echo "<script>Materialize.toast('Dienstgrad/Berechtigung wurden erfolgreich geändert!', 5000);</script>";
+          if($result)  {
+            echo "<script>Materialize.toast('Dienstgrad/Berechtigung wurden erfolgreich geändert!', 5000);</script>";
+          } else {
+            echo "<script>Materialize.toast('Etwas ist schief gelaufen, versuche es erneut!', 5000);</script>";
+          }
         } else {
-          echo "<script>Materialize.toast('Etwas ist schief gelaufen, versuche es erneut!', 5000);</script>";
+          echo "<script>Materialize.toast('Berechtigung existiert nicht, versuche es erneut!', 5000);</script>";
         }
       }
       elseif(isset($_POST['rank'])) {
@@ -325,7 +329,7 @@
                         case false: echo "<td><span class=\"new badge red darken-1\" data-badge-caption=\"Deaktiviert\"></span></td>"; break;
                         default: echo "<td><span class=\"new badge red darken-1\" data-badge-caption=\"Fehler\"></span></td>"; break;
                       }
-                      echo "<td><span class=\"new badge center-align\" data-badge-caption=\"".$benutzer[$i][6]."\"></span></td>";
+                      echo "<td><span class=\"new badge center-align blue-grey darken-4\" data-badge-caption=\"".$benutzer[$i][6]."\"></span></td>";
                       echo "<td><a class=\"btn btn-flat btn-floating dropdown-button waves-effect waves-light transparent\" data-constrainwidth=\"false\" data-activates=\"dropdown".$bid."\"><i class=\"large black-text material-icons\">more_horiz</i></a></td>";
                       echo "</tr>";
 
