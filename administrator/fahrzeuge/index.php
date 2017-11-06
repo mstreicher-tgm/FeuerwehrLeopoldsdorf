@@ -113,11 +113,12 @@
             </ul>
 
             <ul id="profileopt" class="dropdown-content">
-             <li>
-               <a href="../../profile" class="grey-text text-darken-1">
-                 <i class="material-icons">account_box</i> Mein Profil
-               </a>
-             </li>
+              <li>
+                <a href="../../chargen" class="grey-text text-darken-1">
+                  <i class="material-icons">dashboard</i> Chargen
+                </a>
+              </li>
+              <li class="divider"></li>
              <li>
                <a href="../../passwort" class="grey-text text-darken-1">
                  <i class="material-icons">vpn_key</i> Passwort ändern

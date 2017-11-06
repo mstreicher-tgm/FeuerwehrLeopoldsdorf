@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" type="image/*" href="../other/images/icon.png">
-    <link rel="stylesheet" href="../other/css/administrator.css">
+    <link rel="stylesheet" href="../other/css/chargen.css">
     <title>Feuerwehr Leopoldsdorf | Administrator Interface</title>
   </head>
   <body>
@@ -20,7 +20,7 @@
       require_once('../other/php/password.php');
       require_once('../other/php/functions.php');
 
-      if(is_checked_in() && is_administrator()) {
+      if(is_checked_in() && is_chargen()) {
         $user = check_user();
       } else {
         header("location: ../login");
@@ -48,23 +48,25 @@
             </ul>
 
             <ul id="profileopt" class="dropdown-content">
+              <?php if(is_administrator()) { ?>
               <li>
-                <a href="../chargen" class="grey-text text-darken-1">
-                  <i class="material-icons">dashboard</i> Chargen
+                <a href="../administrator" class="grey-text text-darken-1">
+                  <i class="material-icons">dashboard</i> Administrator
                 </a>
               </li>
               <li class="divider"></li>
-             <li>
-               <a href="" class="grey-text text-darken-1">
-                 <i class="material-icons">vpn_key</i> Passwort ändern
-               </a>
-             </li>
-             <li class="divider"></li>
-             <li>
-               <a href="../logout" class="grey-text text-darken-1">
-                 <i class="fa fa-sign-out fa-lg" style="margin-left: 3px;" aria-hidden="true"></i> Abmelden
-               </a>
-             </li>
+              <?php } ?>
+              <li>
+                <a href="../passwort" class="grey-text text-darken-1">
+                  <i class="material-icons">vpn_key</i> Passwort ändern
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="../logout" class="grey-text text-darken-1">
+                  <i class="fa fa-sign-out fa-lg" style="margin-left: 3px;" aria-hidden="true"></i> Abmelden
+                </a>
+              </li>
             </ul>
           </div>
         </nav>
@@ -74,13 +76,7 @@
         <br>
         <li class="active">
           <a class="waves-effect red-text text-darken-4">
-            <i class="material-icons red-text text-darken-4">dashboard</i> Dashboard
-          </a>
-        </li>
-
-        <li>
-          <a class="waves-effect" href="benutzer">
-            <i class="material-icons">account_circle</i> Benutzer
+            <i class="material-icons red-text text-darken-4">dashboard</i> Übersicht
           </a>
         </li>
 
@@ -99,9 +95,10 @@
     </header>
 
     <main>
+      <br>
 
     </main>
 
-    <script src="../other/js/administrator.js"></script>
+    <script src="../../other/js/chargen.js"></script>
   </body>
 </html>

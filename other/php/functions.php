@@ -32,7 +32,26 @@ function is_administrator() {
 			break;
 	}
 }
+function is_chargen() {
+	global $pdo;
+	$statement = $pdo->prepare("SELECT * FROM userdata WHERE id = :id");
+	$result = $statement->execute(array('id' => $_SESSION['userid']));
+	$user = $statement->fetch();
 
+	switch (strtolower($user['berechtigung'])) {
+		case 'administrator':
+			return true;
+			break;
+
+		case 'chargen':
+			return true;
+			break;
+
+		default:
+			return false;
+			break;
+	}
+}
 
 function random_string() {
 	if(function_exists('openssl_random_pseudo_bytes')) {
