@@ -117,7 +117,7 @@
           $result = $statement->execute(array('berechtigung' => $berechtigung, 'id' => $pid));
 
           if($result)  {
-            echo "<script>Materialize.toast('Dienstgrad/Berechtigung wurden erfolgreich geändert!', 5000);</script>";
+            echo "<script>Materialize.toast('Berechtigung wurden erfolgreich geändert!', 5000);</script>";
           } else {
             echo "<script>Materialize.toast('Etwas ist schief gelaufen, versuche es erneut!', 5000);</script>";
           }
@@ -128,13 +128,18 @@
       elseif(isset($_POST['rank'])) {
         $rid = $_POST['rank'];
         $dienstgrad = $_POST['dienstgrad'];
-        $statement = $pdo->prepare("UPDATE userdata SET dienstgrad = :dienstgrad WHERE id = :id");
-        $result = $statement->execute(array('dienstgrad' => $dienstgrad, 'id' => $rid));
 
-        if($result)  {
-          echo "<script>Materialize.toast('Dienstgrad/Berechtigung wurden erfolgreich geändert!', 5000);</script>";
+        if(is_dienstgrad($dienstgrad)) {
+          $statement = $pdo->prepare("UPDATE userdata SET dienstgrad = :dienstgrad WHERE id = :id");
+          $result = $statement->execute(array('dienstgrad' => $dienstgrad, 'id' => $rid));
+
+          if($result)  {
+            echo "<script>Materialize.toast('Dienstgrad wurden erfolgreich geändert!', 5000);</script>";
+          } else {
+            echo "<script>Materialize.toast('Etwas ist schief gelaufen, versuche es erneut!', 5000);</script>";
+          }
         } else {
-          echo "<script>Materialize.toast('Etwas ist schief gelaufen, versuche es erneut!', 5000);</script>";
+          echo "<script>Materialize.toast('Dienstgrad existiert nicht, versuche es erneut!', 5000);</script>";
         }
       }
 

@@ -32,6 +32,7 @@ function is_administrator() {
 			break;
 	}
 }
+
 function is_chargen() {
 	global $pdo;
 	$statement = $pdo->prepare("SELECT * FROM userdata WHERE id = :id");
@@ -65,5 +66,98 @@ function random_string() {
 		$str = md5(uniqid('your_secret_string', true));
 	}
 	return $str;
+}
+
+function is_dienstgrad($dienstgrad) {
+	switch ($dienstgrad) {
+		case "Probefeuerwehrmann":
+		return true;
+		break;
+		case "Feuerwehrmann":
+		return true;
+		break;
+		case "Oberfeuerwehrmann":
+		return true;
+		break;
+		case "Hauptfeuerwehrmann":
+		return true;
+		break;
+		case "Löschmeister":
+		return true;
+		break;
+		case "Oberlöschmeister":
+		return true;
+		break;
+		case "Hauptlöschmeister":
+		return true;
+		break;
+		case "Brandmeister":
+		return true;
+		break;
+		case "Oberbrandmeister":
+		return true;
+		break;
+		case "Hauptbrandmeister":
+		return true;
+		break;
+	  case "Brandinspektor":
+		return true;
+		break;
+		case "Oberbrandinspektor":
+		return true;
+		break;
+		case "Hauptbrandinspektor":
+		return true;
+		break;
+		case "Abschnittsbrandinspektor":
+		return true;
+		break;
+		case "Brandrat":
+		return true;
+		break;
+		case "Oberbrandrat":
+		return true;
+		break;
+		case "Landesfeuerwehrrat":
+		return true;
+		break;
+		case "Verwaltungsmeister":
+		return true;
+		break;
+		case "Oberverwaltungsmeister":
+		return true;
+		break;
+		case "Hauptverwaltungsmeister":
+		return true;
+		break;
+		case "Verwalter":
+		return true;
+		break;
+		case "Oberverwalter":
+		return true;
+		break;
+		case "Hauptverwalter":
+		return true;
+		break;
+		case "Verwaltungsinspektor":
+		return true;
+		break;
+		case "Verwaltungsrat":
+		return true;
+		break;
+		case "Sachbearbeiter":
+		return true;
+		break;
+		case "Abschnittssachbearbeiter":
+		return true;
+		break;
+		case "Bezirkssachbearbeiter":
+		return true;
+		break;
+
+		default:
+		return false;
+		break;
+	}
 }
 ?>
